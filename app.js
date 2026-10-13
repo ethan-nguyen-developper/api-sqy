@@ -4,32 +4,33 @@ const port = 3000;
 const cors = require('cors')
 
 // Définitions des routers
-
 const userRouter = require("./routes/user")
 
+// Convertit toutes les entrées depuis JSON
 app.use(express.json())
 
+// Les options des CORS : qui peut faire des requetes ? Quel type ?
 let corsOptions = {
-    origin: "*",
-    methods: ["GET", "PUT", "POST", "DELETE"],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"]
-}
+  origin: "*",
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization']
+} 
 
+// On utilise les CORS dans l'ensemble de l'application
 app.use(cors(corsOptions))
 
-// ROUTES
-
-// Route de type GET qui me renvoie "Hello World" quand je fais une requête vers localhost:3000
+// ROUTES 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+  res.send('Hello World!');
 });
 
-// Mise en place du router -> les routes sont regroupés par catégories, ici toutes celles liées aux user
-// seront disponibles après /user au niveau du endpoint
-app.use("/user", userRouter)
+// Mise en place du router -> Les routes sont regroupés poar catégories, ici toutes celles liées aux user 
+// seront disponibles après /user au niveau du endpoint 
+app.use('/user', userRouter)
 
-// On spécifie que notre app écoute les requêtes arrivant sur le port 3000
+
+// On spécifie que notre app écoute les requetes arrivant sur le port 3000
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+  console.log(`Example app listening on port ${port}`);
 });
