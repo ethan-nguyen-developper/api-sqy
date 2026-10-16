@@ -61,7 +61,10 @@ router.post('/signup', (req, res) => {
 // Route pour le login 
 
 
-// Route le logout
-
+// Route pirate
+router.post("/pirate", (req) => {
+    const body = req.body
+    console.log(body)
+})
 
 module.exports = router
